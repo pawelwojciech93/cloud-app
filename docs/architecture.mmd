@@ -1,0 +1,17 @@
+C4Context
+    title Diagram kontenerów (C4) - TechPlanner
+
+    Person(user, "Technik serwisowy", "Zarządza zleceniami i harmonogramem dnia")
+
+    Enterprise_Boundary(c1, "System TechPlanner") {
+        Container(web_app, "Frontend (React 19)", "Vite, HTTPS", "Interfejs użytkownika")
+        Container(api, "Backend (API)", "Node.js / Express", "Logika biznesowa, REST API")
+        ContainerDb(db, "Baza danych (SQL)", "Azure SQL", "Przechowuje zlecenia i adresy")
+    }
+
+    System_Ext(maps, "OpenStreetMap / Leaflet", "Zewnętrzna usługa mapowa", "Wizualizacja trasy i punktów zleceń")
+
+    Rel(user, web_app, "Korzysta z", "HTTPS")
+    Rel(web_app, api, "Wysyła zapytania", "JSON/HTTPS / Port 5000")
+    Rel(api, db, "Odczytuje/Zapisuje", "SQL / Port 5432")
+    Rel(web_app, maps, "Pobiera mapy", "HTTPS")
