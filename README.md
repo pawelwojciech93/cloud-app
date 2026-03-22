@@ -31,7 +31,7 @@ docker compose up -d --build
 * [x] **Artefakt 3:** Działająca warstwa prezentacji (React + Vite + Nginx).
 * [x] **Artefakt 4:** Działająca warstwa logiki backendu (.NET 9 + REST API + Docker).
 * [x] **Artefakt 5:** System gotowy na chmurę (DTO, named volumes, EF Core migrations).
-* [ ] **Artefakt 6:** Wdrożenie aplikacji w Azure.
+* [x] **Artefakt 6:** Wdrożenie aplikacji w Azure.
 
 ## Opis projektu
 
