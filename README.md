@@ -24,6 +24,11 @@ docker compose up -d --build
 - Backend (Swagger): http://localhost:8081/index.html
 - Baza danych: localhost:1433
 
+## Adresy produkcyjne (Azure)
+
+- **Frontend:** https://cloud-task-manager-frontend-95030-fsaegzduczgufmh8.francecentral-01.azurewebsites.net
+- **Backend API:** https://cloud-task-manager-api-95030-fchegzgqawg2ggh0.canadacentral-01.azurewebsites.net
+
 ## Status Projektu
 
 * [x] **Artefakt 1:** Struktura projektu i konfiguracja środowiska lokalnego.
