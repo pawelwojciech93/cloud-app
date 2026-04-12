@@ -31,7 +31,18 @@ const Dashboard = () => {
     fetchTasks();
   }, []);
 
-  // 3. Funkcja obsługująca wysyłanie formularza (Dodawanie zadania)
+  // 3. Funkcja obsługująca usuwanie zadania
+  const handleDeleteTask = async (id: number) => {
+    try {
+      await api.delete(`/tasks/${id}`);
+      fetchTasks();
+    } catch (err) {
+      console.error("Błąd podczas usuwania zadania:", err);
+      setError("Nie udało się usunąć zadania.");
+    }
+  };
+
+  // 4. Funkcja obsługująca wysyłanie formularza (Dodawanie zadania)
   const handleAddTask = async (e: React.FormEvent) => {
     e.preventDefault(); // Zapobiega przeładowaniu strony po kliknięciu przycisku
 
@@ -101,6 +112,16 @@ const Dashboard = () => {
               boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
             }}>
               <strong>{item.name}</strong> {item.isCompleted ? '✅' : '⏳'}
+              <button onClick={() => handleDeleteTask(item.id)} style={{
+                marginLeft: '15px',
+                padding: '4px 10px',
+                backgroundColor: '#dc3545',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}>Usuń</button>
             </li>
           ))}
         </ul>
