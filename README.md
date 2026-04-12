@@ -37,6 +37,15 @@ docker compose up -d --build
 * [x] **Artefakt 4:** Działająca warstwa logiki backendu (.NET 9 + REST API + Docker).
 * [x] **Artefakt 5:** System gotowy na chmurę (DTO, named volumes, EF Core migrations).
 * [x] **Artefakt 6:** Wdrożenie aplikacji w Azure.
+* [x] **Artefakt 7:** Zabezpieczona aplikacja – Azure Key Vault i Managed Identity.
+
+## Bezpieczeństwo (Artefakt 7)
+
+Hasła i dane dostępowe zostały usunięte z kodu źródłowego. Aplikacja korzysta z:
+
+- **Azure Key Vault** (`kv-cloud-task-manager007`) – przechowuje connection string do bazy danych jako wpis tajny `DbConnectionString`
+- **Managed Identity** – App Service automatycznie uwierzytelnia się w Key Vault bez użycia żadnych haseł w kodzie
+- **DefaultAzureCredential** – w środowisku produkcyjnym (`IsProduction()`) aplikacja pobiera konfigurację z Key Vault
 
 ## Opis projektu
 
@@ -53,6 +62,4 @@ do Azure SQL Database.
 - **Backend:** .NET 9, ASP.NET Core, Entity Framework Core
 - **Baza danych:** Azure SQL Edge (lokalnie), Azure SQL Database (produkcja)
 - **Infrastruktura:** Docker, Docker Compose
-
-> **Informacja:** W kolejnych etapach dodamy wdrożenie do Azure App Service,
-> Azure SQL Database oraz konfigurację RBAC i Firewall.
+- **Bezpieczeństwo:** Azure Key Vault, Managed Identity
