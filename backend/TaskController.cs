@@ -18,6 +18,10 @@ public class TasksController : ControllerBase
         _context = context;
     }
 
+    /// <summary>
+    /// Pobiera listę zadań z bazy Azure SQL.
+    /// Metoda wykorzystuje mechanizm ponawiania (Retry Logic) w przypadku uśpienia bazy.
+    /// </summary>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TaskReadDto>>> GetAll()
     {
@@ -48,6 +52,9 @@ public class TasksController : ControllerBase
         });
     }
 
+    /// <summary>
+    /// Tworzy nowe zadanie i zapisuje je w bazie danych.
+    /// </summary>
     [HttpPost]
     public async Task<ActionResult<TaskReadDto>> Create(TaskCreateDto taskDto)
     {
@@ -84,6 +91,9 @@ public class TasksController : ControllerBase
         return NoContent(); // Status 204 - operacja udana, brak danych do odesłania
     }
 
+    /// <summary>
+    /// Usuwa zadanie o podanym ID z bazy danych.
+    /// </summary>
     [HttpDelete("{id}")] // 5. Usuń (DELETE)
     public async Task<ActionResult> Delete(int id)
     {
