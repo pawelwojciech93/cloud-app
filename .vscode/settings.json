@@ -1,4 +1,4 @@
 {
-    "appService.deploySubpath": "frontend/dist",
+    "appService.deploySubpath": "backend/publish",
     "appService.defaultWebAppToDeploy": ""
 }
